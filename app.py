@@ -1,4 +1,4 @@
-from enum import unique
+
 from flask import Flask, render_template, request, url_for, redirect
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -100,7 +100,7 @@ class ModelViewProductSource(ModelView):
 
 class ModelViewProductMovement(ModelView):
     can_delete = False
-    can_edit = False
+    can_edit = True
     can_view_details = True
     can_export = True
     export_types = ['csv']

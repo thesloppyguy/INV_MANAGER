@@ -1,0 +1,51 @@
+c_id,p_id,p_name,c_name
+1,1,Mk1 Cockpit,Reliance Industries Ltd.
+2,2,Mk1 Inline Cockpit,3M India Ltd.
+3,3,Mk2 Cockpit,Infosys Ltd.
+4,4,Mk2 Inline Cockpit,Aarti Industries Ltd.
+5,5,Mk3 Cockpit,ABB India Ltd.
+6,6,Mk1 Command Pod,Abbott India Ltd.
+7,7,Mk1-3 Command Pod,ACB Ltd.
+8,8,Mk1 Lander Can,Larsen & Toubro Ltd.
+9,9,Mk2 Lander Can,Hindustan Unilever Ltd.
+10,10,PPD-12 Cupola Module,ITC Ltd.
+11,11,EAS-1 External Command Seat,ACC Ltd.
+12,12,Probodobodyne RoveMate,Adani Group
+13,13,Probodobodyne QBE,Bharti Airtel Ltd.
+14,14,Probodobodyne HECS,AIA Engg. Ltd
+15,15,Probodobodyne OKTO,AkzoNobel
+16,16,Probodobodyne OKTO2,HCL Technologies Ltd.
+17,17,Probodobodyne Stayputnik,Bajaj Finserv Ltd.
+18,18,Probodobodyne HECS2,Titan Company Ltd.
+19,19,RC-001S Remote Guidance Unit,Tech Mahindra Ltd.
+20,20,RC-L01 Remote Guidance Unit,Maruti Suzuki India Ltd.
+21,21,MK2 Drone Core,Wipro Ltd.
+22,22,MPO Probe,UltraTech Cement Ltd.
+23,23,MTM Stage,Tata Steel Ltd.
+24,24,R-4 'Dumpling' External Tank,Tata Motors Ltd.
+25,25,R-11 'Baguette' External Tank,Sun Pharmaceutical Industries Ltd.
+26,26,R-12 'Doughnut' External Tank,Mahindra & Mahindra Ltd.
+27,27,Oscar-B Fuel Tank,Power Grid Corporation of India Ltd.
+28,28,FL-T100 Fuel Tank,Nestle India Ltd.
+29,29,FL-T200 Fuel Tank,Grasim Industries Ltd.
+30,30,FL-T400 Fuel Tank,HDFC Life Insurance Co. Ltd.
+31,31,FL-T800 Fuel Tank,Divi’s Laboratories Ltd.
+32,32,Rockomax X200-8 Fuel Tank,Hindalco Industries Ltd.
+33,33,Rockomax X200-16 Fuel Tank,JSW Steel Ltd.
+34,34,Rockomax X200-32 Fuel Tank,NTPC Ltd.
+35,35,Rockomax Jumbo-64 Fuel Tank,Dr. Reddy’s Laboratories Ltd.
+36,36,Kerbodyne S3-3600 Tank,Apar Industires
+37,37,Kerbodyne S3-7200 Tank,Oil & Natural Gas Corporation Ltd.
+38,38,Kerbodyne S3-14400 Tank,SBI Life Insurance Co.
+39,39,Mk2 Rocket Fuel Fuselage Short,Adani Ports 
+40,40,Mk2 Rocket Fuel Fuselage,Cipla Ltd.
+41,41,Mk3 Rocket Fuel Fuselage Short,Tata Consumer products Ltd.
+42,42,Mk3 Rocket Fuel Fuselage,Bajaj Auto Ltd.
+43,43,Mk3 Rocket Fuel Fuselage Long,Britannia Industries Ltd.
+44,44,C7 Brand Adapter - 2.5m to 1.25m,UPL Ltd.
+45,45,C7 Brand Adapter Slanted - 2.5m to 1.25m,Bharat Petroleum Corp. Ltd.
+46,46,Mk2 to 1.25m Adapter,Shree Cement Ltd.
+47,47,Mk2 to 1.25m Adapter Long,Eicher Motors Ltd.
+48,48,Mk2 Bicoupler,Coal India Ltd.
+49,49,2.5m to Mk2 Adapter,Hero MotoCorp Ltd.
+50,50,Mk3 to Mk2 Adapter,Indian Oil Corporation Ltd.
