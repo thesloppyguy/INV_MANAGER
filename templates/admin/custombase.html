@@ -1,0 +1,21 @@
+{% extends 'admin/base.html' %} {% block head_tail %}
+
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id={{config['GA_TRACKING_ID']}}"></script> -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', "{{config['GA_TRACKING_ID']}}");
+</script>
+{% endblock %} {% block tail %}
+<footer class="container" style="padding-top: 130px;padding-bottom: 0px;">
+    <p>
+        Developed by: Sahil & Shivam<br> Source Code:
+        <a tabindex="-1" href="https://github.com/thesloppyguy/INV_MANAGER">Warehouses Manager
+        </a>.</p>
+</footer>
+{% endblock %}
