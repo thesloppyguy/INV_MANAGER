@@ -17,6 +17,7 @@ CREATE TABLE product_source (
         c_id INTEGER NOT NULL AUTO_INCREMENT,
         c_name VARCHAR(100) NOT NULL,
         p_name VARCHAR(100) NOT NULL,
+        c_email VARCHAR(80),
         PRIMARY KEY (c_id),
         UNIQUE (c_name) FOREIGN KEY(p_id) REFERENCES product (id),
         FOREIGN KEY(p_name) REFERENCES product (name)
@@ -41,4 +42,10 @@ CREATE TABLE product_stock (
         PRIMARY KEY (id),
         FOREIGN KEY(location_id) REFERENCES location (id),
         FOREIGN KEY(product_id) REFERENCES product (id)
+);
+CREATE TABLE flasklogin_user(
+        id INT,
+        username VARCHAR(100),
+        password VARCHAR(200),
+        PRIMARY KEY(id)
 );

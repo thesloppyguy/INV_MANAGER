@@ -1,9 +1,9 @@
-
 from flask import Flask, render_template, request, url_for, redirect
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_basicauth import BasicAuth
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin
 from wtforms import validators
 import os
 
@@ -35,7 +35,7 @@ class ModelViewProduct(ModelView):
     can_delete = False
     can_view_details = True
     can_export = True
-    export_types = ['csv', 'xls']
+    export_types = ['csv']
     column_labels = dict(name='Product Name',
                          description='Product Description')
     column_filters = ['id', 'name', 'description']
@@ -62,7 +62,7 @@ class ModelViewLocation(ModelView):
     can_delete = False
     can_view_details = True
     can_export = True
-    export_types = ['csv', 'xls']
+    export_types = ['csv']
     column_labels = dict(name='Location Name', other_details='Other Details')
     column_filters = ['id', 'name', 'other_details']
     page_size = 20
@@ -89,13 +89,22 @@ class ModelViewProductSource(ModelView):
     can_edit = True
     can_create = True
     column_labels = dict(p_name="Product Name", prod_id="Product ID",
-                         prod_name='Product Name', c_name='Company Name')
+                         prod_name='Product Name', c_name='Company Name', c_email='Email')
+    column_exclude_list = ['prod_id']
     column_sortable_list = ('c_name', 'p_name')
     column_default_sort = 'c_id'
     column_searchable_list = ['p_name', 'c_name']
-    page_size = 35
+    page_size = 20
     can_export = True
     export_types = ['csv']
+    form_args = {
+        'p_name': {
+            'label': 'Product Name'
+        },
+        'c_name': {
+            'label': 'Company Name'
+        }
+    }
 
 
 class ModelViewProductMovement(ModelView):
@@ -127,8 +136,8 @@ class ModelViewProductMovement(ModelView):
                         'UPDATE product_stock SET available_stock = product_stock.available_stock + (1*:qty) WHERE id = :id')
                     conn.execute(q, qty=form.qty.data, id=row_to.id)
                 else:
-                    q = db.text(
-                        'INSERT INTO product_stock (location_id, product_id, available_stock) VALUES (:l,:p,:qty)')
+                    #q = db.text('INSERT INTO product_stock (location_id, product_id, available_stock) VALUES (:l,:p,:qty)')
+                    q = db.text('CALL ins_stock(:l,:p,:qty)')
                     conn.execute(
                         q, qty=form.qty.data, l=form.to_location.data.id, p=form.product.data.id)
             if form.from_location.data:
@@ -189,8 +198,8 @@ class ModelViewProductMovement(ModelView):
                     if int(form.qty.data)-int(row.qty) < 0:
                         raise validators.ValidationError(
                             'Insufficient stock at "to_location". Stock available is: 0')
-                    q = db.text(
-                        'INSERT INTO product_stock (location_id, product_id, available_stock) VALUES (:l,:p,:qty)')
+                    #q = db.text('INSERT INTO product_stock (location_id, product_id, available_stock) VALUES (:l,:p,:qty)')
+                    q = db.text('CALL ins_stock(:l,:p,:qty)')
                     conn.execute(
                         q, qty=(int(form.qty.data)-int(row.qty)), l=row.to_location_id, p=row.product_id)
             trans.commit()
@@ -203,7 +212,7 @@ class ModelViewProductStock(ModelView):
     can_create = False
     column_sortable_list = ('available_stock', )
     column_default_sort = 'product_id'
-    page_size = 35
+    page_size = 20
     can_export = True
     export_types = ['csv']
 
@@ -241,6 +250,7 @@ class Product_Source(db.Model):
     p_name = db.Column(db.String(100), db.ForeignKey(Product.name))
     prod_id = db.relationship(Product, foreign_keys=[p_id])
     prod_name = db.relationship(Product, foreign_keys=[p_name])
+    c_email = db.Column(db.String(80), nullable=True)
     db.UniqueConstraint('p_id', 'c_id',
                         name='product_source__id_product_id_uindex')
 
@@ -300,9 +310,7 @@ def favicon():
 
 
 if __name__ == "__main__":
-    # create demo data if demo flag set
-    db.create_all()
 
-    # create_demo_data()
+    db.create_all()
     debug = not (app.config['is_production'])
     app.run(debug=debug)
